@@ -175,6 +175,12 @@ export const directoryOperates = {
     label: '新建属性',
     iconType: '属性',
   },
+  NewAsset: {
+    sort: 5,
+    cmd: 'newAsset',
+    label: '新建资产',
+    iconType: '资产',
+  },
   NewWork: {
     sort: 6,
     cmd: 'newWork',
@@ -222,6 +228,7 @@ export const directoryNew = {
     directoryOperates.NewForm,
     directoryOperates.NewTransferConfig,
     directoryOperates.NewPageTemplate,
+    directoryOperates.NewAsset,
   ],
 };
 
