@@ -332,6 +332,8 @@ export type TargetModel = {
   id: string;
   // 名称
   name: string;
+  // 国标名称
+  standardName: string;
   // 编号
   code: string;
   // 类型名
