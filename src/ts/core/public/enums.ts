@@ -17,7 +17,8 @@ export enum TargetType {
   /** 自归属用户 */
   'Person' = '人员',
   'Company' = '单位',
-  'Storage' = '存储资源'
+  'Storage' = '存储资源',
+  'Assert' = '资产'
 }
 
 /** 分类基础类型 */
