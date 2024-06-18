@@ -50,6 +50,8 @@ const TypeIcon = ({ avatar, iconType, size }: TypeIconInfo) => {
         return <im.ImBook {...config} />;
       case '分类':
         return <im.ImTree {...config} />;
+      case '资产':
+        return <im.ImMagicWand {...config} />;
       case '分类项':
         return <im.ImPriceTags {...config} />;
       case '属性':
