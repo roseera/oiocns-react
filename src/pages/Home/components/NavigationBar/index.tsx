@@ -13,6 +13,8 @@ import { getResouces } from '@/config/location';
 import { generateUuid } from '@/utils/excel';
 const resource = getResouces();
 
+//顶部菜单组件
+
 export const allPages: NavigationItem[] = [
   {
     key: 'workbench',
