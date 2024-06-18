@@ -331,6 +331,7 @@ const WorkBench: React.FC = () => {
             {renderCmdBtn('joinCohort', '加入群聊', 'joinCohort')}
             {renderCmdBtn('newCompany', '设立单位', '单位')}
             {renderCmdBtn('joinCompany', '加入单位', 'joinCompany')}
+            {renderCmdBtn('newAsset', '添加资产', 'newAsset')}
           </Space>
         </div>
       </>
