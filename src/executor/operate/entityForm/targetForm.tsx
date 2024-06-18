@@ -22,6 +22,12 @@ const TargetForm = (props: Iprops) => {
   const readonly = props.formType === 'remark';
   let initialValue: any = props.current.metadata;
   switch (props.formType) {
+    case 'newAsset':
+      typeName = '资产';
+      title = '添加资产';
+      types = [TargetType.Assert];
+      initialValue = {};
+      break;
     case 'newCohort':
       typeName = '群组';
       title = '设立群组';
@@ -142,6 +148,16 @@ const TargetForm = (props: Iprops) => {
       },
     },
   ];
+  if (props.formType === 'newAsset'){
+    columns.push({
+      title: '国家标准分类名称',
+      dataIndex: 'standardName',
+      readonly: readonly,
+      formItemProps: {
+        rules: [{ required: true, message: '分类名称为必填项' }],
+      },
+    })
+  }
   if (readonly) {
     columns.push(...EntityColumns(props.current.metadata));
   }

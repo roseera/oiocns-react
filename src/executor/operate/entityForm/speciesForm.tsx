@@ -6,6 +6,7 @@ import UploadItem from '../../tools/uploadItem';
 import { ISpecies } from '@/ts/core';
 import { EntityColumns } from './entityColumns';
 import { schema } from '@/ts/base';
+import { Button } from 'antd';
 
 interface Iprops {
   formType: string;
@@ -77,6 +78,55 @@ const SpeciesForm = (props: Iprops) => {
       },
     },
   ];
+
+
+  if (props.typeName === '资产'){
+    columns.push({
+      title: '国家标准分类名称',
+      dataIndex: 'standardName',
+      readonly: readonly,
+      formItemProps: {
+        rules: [{ required: true, message: '国家标准分类名称为必填项' }],
+      },
+    });
+    columns.push({
+      title: '使用AI模型实现国标和代码的智能分类', // 按钮列的标题
+      key: 'action',
+      renderFormItem: (_, __, form) => {
+        // 处理点击事件的函数
+        const handlePredictClick = async () => {
+          // 获取名称字段的值
+          const nameValue = form.getFieldValue('name');
+          // 发送请求到后端（请替换成您的后端接口）
+          const response = await fetch('http://localhost:5000/api/predict', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: nameValue }),
+          });
+          if (response.ok) {
+            const data = await response.json();
+            // 假设后端返回的数据结构是 { code: '返回的代码', standardName: '返回的国家标准分类名称' }
+            // 更新代码和国家标准分类名称字段的值
+            form.setFieldsValue({
+              code: data.code,
+              standardName: data.standardName,
+            });
+          } else {
+            // 处理错误情况
+            console.error('预测失败:', response.statusText);
+          }
+        };
+  
+        return (
+          <Button type="primary" onClick={handlePredictClick}>
+            预测
+          </Button>
+        );
+      },
+    });
+  }
   if (readonly) {
     columns.push(...EntityColumns(props.current!.metadata));
   }

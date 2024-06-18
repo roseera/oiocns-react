@@ -54,10 +54,13 @@ const EntityForm: React.FC<IProps> = ({ cmd, entity, finished }) => {
     case 'newDict':
     case 'updateDict':
     case 'remarkDict':
+    case 'newAsset':
+    case 'updateAsset':
+    case 'remarkAsset':
       return (
         <SpeciesForm
-          formType={cmd.replace('Dict', '').replace('Species', '')}
-          typeName={cmd.includes('Dict') ? '字典' : '分类'}
+          formType={cmd.replace('Dict', '').replace('Species', '').replace('Asset', '')}
+          typeName={cmd.includes('Dict') ? '字典' : (cmd.includes('Asset') ? '资产' : '分类')}
           current={entity as any}
           finished={reloadFinish}
         />
